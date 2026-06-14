@@ -1,0 +1,1 @@
+export { PropertyTitle } from './PropertyTitle'

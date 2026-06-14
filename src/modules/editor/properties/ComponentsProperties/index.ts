@@ -1,0 +1,1 @@
+export { ComponentsProperties } from './ComponentsProperties'

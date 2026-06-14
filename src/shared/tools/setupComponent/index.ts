@@ -1,0 +1,1 @@
+export { setupComponent } from './setupComponent'

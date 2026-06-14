@@ -1,0 +1,1 @@
+export { SWREditorConfig } from './SWREditorConfig'

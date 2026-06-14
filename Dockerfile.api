@@ -1,0 +1,31 @@
+# Use uma imagem base oficial do Node.js
+FROM node:20-alpine as builder
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia os arquivos de dependências primeiro
+COPY package*.json ./
+
+# Instala todas as dependências, incluindo as de desenvolvimento
+RUN npm install
+
+# Copia o restante do código da aplicação
+COPY . .
+
+# Constrói o projeto Next.js
+RUN npm run build
+
+# Cria uma nova imagem para execução
+FROM node:20-alpine as runner
+
+WORKDIR /app
+
+# Copia apenas os arquivos necessários para a imagem final
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/public ./public
+
+# Comando padrão para iniciar o servidor Next.js
+CMD node server.js

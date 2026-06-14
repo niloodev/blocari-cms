@@ -1,0 +1,1 @@
+export { TypographyProperties } from './TypographyProperties'

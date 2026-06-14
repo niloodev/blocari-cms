@@ -1,0 +1,1 @@
+export { TypographyMenu } from './TypographyMenu'

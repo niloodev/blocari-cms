@@ -1,0 +1,31 @@
+services:
+    db:
+        image: mongo:latest
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+        ports:
+            - '${MONGO_PORT}:${MONGO_PORT}'
+        profiles:
+            - standalone
+        volumes:
+            - ./data/db:/data/db
+    web:
+        build:
+            context: .
+            dockerfile: ./Dockerfile.${TYPE}
+        ports:
+            - '${NEXT_PORT}:${NEXT_PORT}'
+        depends_on:
+            - db
+        environment:
+            - TYPE=${TYPE}
+            - ENV=${ENV}
+            - MONGO_HOST=db
+            - MONGO_PORT=27017
+            - MONGO_DB=${MONGO_DB}
+            - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+            - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+        profiles:
+            - standalone
+            - api

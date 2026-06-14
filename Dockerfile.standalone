@@ -1,0 +1,21 @@
+# Use uma imagem base oficial do Node.js
+FROM node:20-alpine as runner
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Instala bash e netcat
+RUN apk add --no-cache bash netcat-openbsd
+
+# Copia os arquivos de dependências primeiro
+COPY package*.json ./
+
+# Instala todas as dependências, incluindo as de desenvolvimento
+RUN npm install
+
+# Copia o restante do código da aplicação
+COPY . .
+
+RUN chmod +x ./entrypoint.sh
+
+CMD ["./entrypoint.sh"]

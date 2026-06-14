@@ -1,0 +1,1 @@
+export { PagesProperties } from './PagesProperties'
