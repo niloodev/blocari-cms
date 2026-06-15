@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# claude
+.claude
+
 # production
 /build
 
@@ -27,6 +30,8 @@
 # local env (use .env.example as a template)
 .env
 .env.local
+.env.prod
+.env.production
 
 # debug
 npm-debug.log*
@@ -43,3 +48,4 @@ next-env.d.ts
 
 # mongodb
 data/db
+/db

@@ -42,5 +42,6 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
-echo "🎯 Iniciando aplicação em modo desenvolvimento..."
-npm run dev
+echo "🎯 Iniciando aplicação em modo desenvolvimento na porta ${NEXT_PORT:-3000}..."
+# next dev não lê NEXT_PORT; passamos a porta explicitamente.
+npm run dev -- -p "${NEXT_PORT:-3000}"
