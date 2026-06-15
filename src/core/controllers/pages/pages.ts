@@ -11,6 +11,7 @@ import {
     deletePage as deletePageModel,
 } from '@/core/models/pages'
 import { pageErrors } from './pages.errors'
+import { revalidatePages } from './pages.utils'
 
 export const getPages: IPageController['getPages'] = async (
     isDynamic,
@@ -53,6 +54,7 @@ export const createPage: IPageController['createPage'] = async page => {
 
     try {
         const newPage = await createPageModel(page)
+        revalidatePages(newPage)
         return {
             status: 'success',
             message: 'Página criada com sucesso',
@@ -71,7 +73,9 @@ export const updatePage: IPageController['updatePage'] = async page => {
         return { status: 'error', error: pageErrors.pageNotValid }
 
     try {
+        const previousPage = await getPageByIdModel(page._id)
         const updatedPage = await updatePageModel(page)
+        revalidatePages(previousPage, updatedPage)
         return {
             status: 'success',
             message: 'Página atualizada com sucesso',
@@ -88,6 +92,7 @@ export const deletePage: IPageController['deletePage'] = async id => {
     if (!id) return { status: 'error', error: pageErrors.idIsRequired }
 
     const deletedPage = await deletePageModel(id)
+    revalidatePages(deletedPage)
     return {
         status: 'success',
         message: 'Página deletada com sucesso',
