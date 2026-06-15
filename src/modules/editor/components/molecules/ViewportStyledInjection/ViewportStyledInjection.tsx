@@ -1,9 +1,28 @@
+'use client'
+
 import { StyleSheetManager } from 'styled-components'
 import { ViewportStyledInjectionProps } from './ViewportStyledInjection.types'
+import { useEffect } from 'react'
 
 export function ViewportStyledInjection({
-    iframe,
-    target,
+    children,
+    document,
 }: ViewportStyledInjectionProps) {
-    return <StyleSheetManager target={target}>{iframe}</StyleSheetManager>
+    useEffect(() => {
+        if (!document) return
+
+        const style = document?.createElement('style')
+        style.innerHTML = `
+            html {
+                background-color: #FFF !important;
+            }
+        `
+        document?.body?.insertBefore(style, document?.body?.firstChild)
+    }, [document])
+
+    return (
+        <StyleSheetManager target={document?.body}>
+            {children}
+        </StyleSheetManager>
+    )
 }

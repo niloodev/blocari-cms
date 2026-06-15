@@ -4,7 +4,7 @@ import {
     Smartphone,
     LayoutGrid,
     PenTool,
-    TypeOutline,
+    // TypeOutline,
     ImagePlus,
     Logs,
 } from 'lucide-react'
@@ -13,7 +13,7 @@ import { Menus } from './editor.types'
 
 export const viewports: Viewports = [
     {
-        width: 1440,
+        width: 1600,
         height: 'auto',
         icon: <Monitor width={20} height={20} />,
         label: 'Desktop',
@@ -25,7 +25,7 @@ export const viewports: Viewports = [
         label: 'Tablet',
     },
     {
-        width: 360,
+        width: 380,
         height: 'auto',
         icon: <Smartphone width={20} height={20} />,
         label: 'Mobile',
@@ -53,21 +53,17 @@ export const menus: Menus = [
             menu: 'ComponentsMenu',
             properties: 'ComponentsProperties',
         },
-
-        {
-            icon: <TypeOutline width={20} height={20} />,
-            title: 'Tipografia',
-            menu: 'TypographyMenu',
-            properties: 'TypographyProperties',
-            disabled: true,
-        },
-
+        // {
+        //     icon: <TypeOutline width={20} height={20} />,
+        //     title: 'Tipografia',
+        //     menu: 'TypographyMenu',
+        //     properties: 'TypographyProperties',
+        // },
         {
             icon: <ImagePlus width={20} height={20} />,
             title: 'Galeria',
             menu: 'GalleryMenu',
             properties: 'GalleryProperties',
-            disabled: true,
         },
     ],
 ]

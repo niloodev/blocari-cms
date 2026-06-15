@@ -1,0 +1,1 @@
+export { useAdaptor } from './useAdaptor'

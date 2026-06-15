@@ -1,4 +1,4 @@
-import { SharedSelection } from '@heroui/react'
+import { SharedSelection } from '@/shared/libs/heroui'
 import { FieldSelectProps } from './FieldSelect.types'
 
 export function useFieldSelect({

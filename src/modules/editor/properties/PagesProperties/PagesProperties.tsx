@@ -4,10 +4,16 @@ import {
     PropertyContainer,
     PropertyTitle,
 } from '@/modules/editor/components/atoms'
-import { DeleteButton } from '@/modules/editor/components/molecules'
+import { DeletePageButton } from './subcomponents'
 import { Puck } from '@measured/puck'
+import { useEditor } from '@/modules/editor/store'
+import { PagesPropertiesLoading } from './PagesProperties.loading'
 
 export function PagesProperties() {
+    const { isLoading } = useEditor()
+
+    if (isLoading) return <PagesPropertiesLoading />
+
     return (
         <div className="properties-wrapper">
             <PropertyTitle>Editar Página</PropertyTitle>
@@ -15,7 +21,7 @@ export function PagesProperties() {
                 <Puck.Fields />
             </div>
             <PropertyContainer>
-                <DeleteButton />
+                <DeletePageButton />
             </PropertyContainer>
         </div>
     )

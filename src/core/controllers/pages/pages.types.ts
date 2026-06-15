@@ -2,29 +2,20 @@ import { IPage } from '@/core/models/pages'
 import { BaseError, BaseResponse } from '../controllers.types'
 import { pageErrors } from './pages.errors'
 
-type PageErrorsKeys = keyof typeof pageErrors
+type PageErrorsValues = (typeof pageErrors)[keyof typeof pageErrors]
+
+export type IPageControllerResponse<T> =
+    | BaseResponse<T>
+    | BaseError<PageErrorsValues>
+
 export interface IPageController {
-    getPages: () => Promise<
-        BaseResponse<IPage[]> | BaseError<(typeof pageErrors)[PageErrorsKeys]>
-    >
-    getPageBySlug: (
-        slug: string,
-    ) => Promise<
-        BaseResponse<IPage> | BaseError<(typeof pageErrors)[PageErrorsKeys]>
-    >
-    getPageById: (
-        id: string,
-    ) => Promise<
-        BaseResponse<IPage> | BaseError<(typeof pageErrors)[PageErrorsKeys]>
-    >
-    createPage: (
-        page: IPage,
-    ) => Promise<
-        BaseResponse<IPage> | BaseError<(typeof pageErrors)[PageErrorsKeys]>
-    >
-    updatePage: (
-        page: IPage,
-    ) => Promise<
-        BaseResponse<IPage> | BaseError<(typeof pageErrors)[PageErrorsKeys]>
-    >
+    getPages: (
+        isDynamic?: boolean,
+        title?: string,
+    ) => Promise<IPageControllerResponse<IPage[]>>
+    getPageBySlug: (slug: string) => Promise<IPageControllerResponse<IPage>>
+    getPageById: (id: string) => Promise<IPageControllerResponse<IPage>>
+    createPage: (page: IPage) => Promise<IPageControllerResponse<IPage>>
+    updatePage: (page: IPage) => Promise<IPageControllerResponse<IPage>>
+    deletePage: (id: string) => Promise<IPageControllerResponse<IPage>>
 }

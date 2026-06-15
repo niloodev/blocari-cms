@@ -1,12 +1,9 @@
 'use client'
 
-import { Button } from '@heroui/react'
-import { useState } from 'react'
-import { MenuTitle } from '@/modules/editor/components/atoms'
+import { Button } from '@/shared/libs/heroui'
+import { MenuTitle } from '@/modules/editor/components/atoms/MenuTitle'
 
 export function TypographyMenu() {
-    const [selected, setSelected] = useState<string>('Poppins')
-
     const typographyMock = ['Poppins', 'Times New Roman', 'Arial', 'Gothic']
 
     return (
@@ -19,8 +16,7 @@ export function TypographyMenu() {
                             key={typography}
                             size="sm"
                             variant="flat"
-                            className={`${typography == selected ? 'bg-[#006FEE33]' : 'bg-white'} text-[#000] text-[12px] leading-[120%] justify-start`}
-                            onPress={() => setSelected(typography)}
+                            className="bg-content1 text-foreground justify-start"
                         >
                             {typography}
                         </Button>

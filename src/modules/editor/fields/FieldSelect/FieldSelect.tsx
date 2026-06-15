@@ -2,8 +2,9 @@
 
 import { PropertyContainer } from '@/modules/editor/components/atoms'
 import { FieldSelectProps, FieldSelectItens } from './FieldSelect.types'
-import { Select, SelectItem } from '@heroui/react'
+import { Select, SelectItem } from '@/shared/libs/heroui'
 import { useFieldSelect } from './FieldSelect.hook'
+
 export function FieldSelect({
     label,
     items,

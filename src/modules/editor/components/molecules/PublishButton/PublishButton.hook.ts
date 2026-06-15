@@ -1,32 +1,28 @@
-import { createOrUpdatePage } from '@/modules/editor/services'
+import { usePageMutation } from '@/modules/editor/hooks'
 import { useEditor } from '@/modules/editor/store'
 import { usePuck } from '@measured/puck'
-import { useState, useCallback } from 'react'
-import { useRouter } from 'next/navigation'
+import { useCallback } from 'react'
 
 export function usePublishButton() {
     const { appState } = usePuck()
-    const { publishedData, setPublishedData } = useEditor()
-    const router = useRouter()
-    const [isLoading, setIsLoading] = useState(false)
+    const { publishedData } = useEditor()
 
     const pageId = publishedData?._id
 
+    const { mutate, isLoading } = usePageMutation({
+        mutationType: pageId ? 'update' : 'create',
+    })
+
     const handlePublish = useCallback(async () => {
-        setIsLoading(true)
-        createOrUpdatePage({
+        await mutate({
             id: pageId,
             data: appState.data,
-            setPublishedData,
-        }).finally(() => {
-            setIsLoading(false)
         })
-    }, [appState.data, pageId, setPublishedData, setIsLoading])
+    }, [mutate, pageId, appState.data])
 
     return {
         pageId,
         handlePublish,
         isLoading,
-        router,
     }
 }

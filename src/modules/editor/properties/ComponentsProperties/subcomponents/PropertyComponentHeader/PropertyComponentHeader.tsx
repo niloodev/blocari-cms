@@ -1,5 +1,5 @@
-import { PropertyContainer } from '@/modules/editor/components/atoms'
-import { BreadcrumbItem, Breadcrumbs } from '@heroui/react'
+import { PropertyContainer } from '@/modules/editor/components/atoms/PropertyContainer'
+import { BreadcrumbItem, Breadcrumbs } from '@/shared/libs/heroui'
 import { usePropertyComponentHeader } from './PropertyComponentHeader.hook'
 
 export function PropertyComponentHeader() {
@@ -18,11 +18,11 @@ export function PropertyComponentHeader() {
                     {hierarchy?.map((breadcrumb: string, index: number) => (
                         <BreadcrumbItem key={breadcrumb + index}>
                             {index + 1 == hierarchy?.length ? (
-                                <span className="text-[#A1A1AA]">
+                                <span className="text-primary">
                                     {breadcrumb}
                                 </span>
                             ) : (
-                                <span className="text-[#006FEE]">
+                                <span className="text-gray-400">
                                     {breadcrumb}
                                 </span>
                             )}
@@ -30,9 +30,7 @@ export function PropertyComponentHeader() {
                     ))}
                 </Breadcrumbs>
             )}
-            <h2 className="font-medium text-[18px] leading-[110%]">
-                Editar {componentName}
-            </h2>
+            <h2 className="text-md">Editar {componentName}</h2>
         </PropertyContainer>
     )
 }

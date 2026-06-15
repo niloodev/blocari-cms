@@ -1,2 +1,2 @@
-export * from './EditorPage'
-export * from './RenderPage'
+export { EditorPage } from './EditorPage'
+export { RenderPage } from './RenderPage'

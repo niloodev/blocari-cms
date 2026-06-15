@@ -1,64 +1,7 @@
-import type { Metadata, Viewport } from 'next'
+import type { Viewport } from 'next'
 import { GlobalProviders } from '@/core/providers'
-export const metadata: Metadata = {
-    title: {
-        default: 'CMS',
-        template: '%s | CMS',
-    },
-    description: 'CMS moderno e flexível construído com Next.js',
-    applicationName: 'CMS',
-    authors: [
-        {
-            name: 'Codako',
-            url: 'https://codako.com.br',
-        },
-    ],
-    generator: 'Next.js',
-    keywords: [
-        'cms',
-        'nextjs',
-        'react',
-        'typescript',
-        'gerenciador de conteúdo',
-        'dashboard',
-        'admin',
-        'codako',
-    ],
-    referrer: 'origin-when-cross-origin',
-    creator: 'Codako',
-    publisher: 'Codako',
-    formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-    },
-    metadataBase: new URL('https://codako.com.br'),
-    alternates: {
-        canonical: '/',
-    },
-    openGraph: {
-        title: 'CMS',
-        description: 'CMS moderno e flexível construído com Next.js',
-        url: 'https://codako.com.br',
-        siteName: 'CMS',
-        locale: 'pt_BR',
-        type: 'website',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'CMS',
-        description: 'CMS moderno e flexível construído com Next.js',
-        creator: '@codako',
-    },
-    verification: {
-        google: 'google-site-verification-code',
-        other: {
-            'msvalidate.01': 'microsoft-site-verification-code',
-        },
-    },
-    category: 'technology',
-    classification: 'Content Management System',
-}
+import { Poppins, Rubik, Lexend_Exa } from 'next/font/google'
+import '@/core/assets/global.css'
 
 export const viewport: Viewport = {
     width: 'device-width',
@@ -67,13 +10,38 @@ export const viewport: Viewport = {
     userScalable: true,
 }
 
+const poppins = Poppins({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+    variable: '--font-poppins',
+    display: 'swap',
+})
+
+const rubik = Rubik({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+    variable: '--font-rubik',
+    display: 'swap',
+})
+
+const lexendExa = Lexend_Exa({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700'],
+    variable: '--font-lexend',
+    display: 'swap',
+})
+
 export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
 }>) {
     return (
-        <html lang="pt-BR">
+        <html
+            lang="pt-BR"
+            suppressHydrationWarning
+            className={`${poppins.variable} ${rubik.variable} ${lexendExa.variable}`}
+        >
             <body>
                 <GlobalProviders>{children}</GlobalProviders>
             </body>

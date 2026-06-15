@@ -1,8 +1,8 @@
 import { Data } from '@measured/puck'
 import { IPageModels } from '../pages.types'
 
-const getPages: IPageModels['getPages'] = async () => {
-    console.log('API Pages Fetched')
+const getPages: IPageModels['getPages'] = async isDynamic => {
+    console.log('API Pages Fetched', { isDynamic })
     return []
 }
 
@@ -12,6 +12,7 @@ const createPage: IPageModels['createPage'] = async () => {
         title: 'teste',
         slug: '/teste',
         content: {} as Data,
+        dynamicAdaptor: 'products',
         _id: '123',
     }
 }
@@ -24,6 +25,7 @@ const getPageBySlug: IPageModels['getPageBySlug'] = async () => {
         name: 'teste',
         content: {} as Data,
         _id: '123',
+        dynamicAdaptor: 'products',
     }
 }
 
@@ -35,6 +37,7 @@ const getPageById: IPageModels['getPageById'] = async () => {
         content: {} as Data,
         name: 'teste',
         _id: '123',
+        dynamicAdaptor: 'products',
     }
 }
 
@@ -46,6 +49,19 @@ const updatePage: IPageModels['updatePage'] = async () => {
         content: {} as Data,
         name: 'teste',
         _id: '123',
+        dynamicAdaptor: 'products',
+    }
+}
+
+const deletePage: IPageModels['deletePage'] = async () => {
+    console.log('API Page Deleted')
+    return {
+        title: 'teste',
+        slug: '/teste',
+        content: {} as Data,
+        name: 'teste',
+        _id: '123',
+        dynamicAdaptor: 'products',
     }
 }
 
@@ -55,4 +71,5 @@ export const pageModels: IPageModels = {
     getPageBySlug,
     getPageById,
     updatePage,
+    deletePage,
 }

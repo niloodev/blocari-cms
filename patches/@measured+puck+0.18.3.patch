@@ -1,0 +1,58 @@
+diff --git a/node_modules/@measured/puck/dist/index.css b/node_modules/@measured/puck/dist/index.css
+index 0061656..44d3c3d 100644
+--- a/node_modules/@measured/puck/dist/index.css
++++ b/node_modules/@measured/puck/dist/index.css
+@@ -23,8 +23,8 @@
+   --puck-color-azure-07: #88b0da;
+   --puck-color-azure-08: #abc7e5;
+   --puck-color-azure-09: #cfdff0;
+-  --puck-color-azure-10: #e7eef7;
+-  --puck-color-azure-11: #f3f6fb;
++  --puck-color-azure-10: hsl(var(--heroui-primary-100));
++  --puck-color-azure-11: hsl(var(--heroui-primary-100));
+   --puck-color-azure-12: #f7faff;
+   --puck-color-green-01: #002000;
+   --puck-color-green-02: #043604;
+@@ -37,7 +37,7 @@
+   --puck-color-green-09: #b8e8bf;
+   --puck-color-green-10: #ddf3e0;
+   --puck-color-green-11: #eff8f0;
+-  --puck-color-green-12: #f3fcf4;
++  --puck-color-green-12: #fef2f2;
+   --puck-color-yellow-01: #211000;
+   --puck-color-yellow-02: #362700;
+   --puck-color-yellow-03: #4c4000;
+diff --git a/node_modules/@measured/puck/dist/index.d.ts b/node_modules/@measured/puck/dist/index.d.ts
+index 2493281..b51c65f 100644
+--- a/node_modules/@measured/puck/dist/index.d.ts
++++ b/node_modules/@measured/puck/dist/index.d.ts
+@@ -4,6 +4,8 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
+ import * as react from 'react';
+ import { ReactNode, SyntheticEvent, ReactElement } from 'react';
+ 
++export type { DropZoneProps }
++
+ declare const ActionBar: {
+     ({ label, children, }: {
+         label?: string;
+diff --git a/node_modules/@measured/puck/dist/resolve-all-data-ChsqfT2w.d.ts b/node_modules/@measured/puck/dist/resolve-all-data-ChsqfT2w.d.ts
+index 9cb9eb5..8319b39 100644
+--- a/node_modules/@measured/puck/dist/resolve-all-data-ChsqfT2w.d.ts
++++ b/node_modules/@measured/puck/dist/resolve-all-data-ChsqfT2w.d.ts
+@@ -5,7 +5,7 @@ type ItemSelector = {
+     zone?: string;
+ };
+ 
+-type DropZoneProps = {
++export type DropZoneProps = {
+     zone: string;
+     allow?: string[];
+     disallow?: string[];
+@@ -22,6 +22,7 @@ type FieldOption = {
+ type FieldOptions = Array<FieldOption> | ReadonlyArray<FieldOption>;
+ type BaseField = {
+     label?: string;
++    validator?: (value: any) => { message: string; valid: boolean }
+ };
+ type TextField = BaseField & {
+     type: "text";

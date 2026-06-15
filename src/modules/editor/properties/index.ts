@@ -1,4 +1,4 @@
-export * from './ComponentsProperties'
-export * from './PagesProperties'
-export * from './GalleryProperties'
-export * from './TypographyProperties'
+export { ComponentsProperties } from './ComponentsProperties'
+export { PagesProperties } from './PagesProperties'
+export { GalleryProperties } from './GalleryProperties'
+export { TypographyProperties } from './TypographyProperties'

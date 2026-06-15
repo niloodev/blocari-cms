@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Tooltip } from '@heroui/react'
+import { Button, Tooltip } from '@/shared/libs/heroui'
 import { viewports } from '@/modules/editor/editor.constants'
 import { useViewportButtons } from './ViewportButtons.hook'
 
@@ -20,15 +20,17 @@ export function ViewportButtons() {
                         content={viewport?.label}
                         placement="bottom"
                         color="foreground"
+                        closeDelay={0}
                     >
                         <Button
                             onPress={() => defineViewport(viewport)}
+                            aria-label={viewport?.label}
                             className={`
-                            bg-[#D4D4D866] text-[#000] min-w-[none] w-[62px] p-[none]
+                            bg-content2 text-foreground min-w-[none] w-[62px] p-[none]
                             ${isFirst ? 'rounded-tr-none rounded-br-none' : ''}
                             ${isLast ? 'rounded-tl-none rounded-bl-none' : ''}
                             ${!isFirst && !isLast ? 'rounded-none' : ''}
-                            ${isSelected ? 'bg-[#006FEE33] text-[#006FEE]' : ''}
+                            ${isSelected ? 'bg-primary-100 text-primary' : ''}
                         `}
                         >
                             {viewport.icon && (
