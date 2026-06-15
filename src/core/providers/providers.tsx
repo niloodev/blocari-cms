@@ -1,13 +1,16 @@
 'use client'
 
-import { ToastProvider, HeroUIProvider } from '@heroui/react'
+import { ToastProvider, HeroUIProvider } from '@/shared/libs/heroui'
 import { StyledComponentsRegistry } from './StyledComponentsRegistry'
+import { NextThemesProvider } from './NextThemesProvider'
 
 export function AdminProviders({ children }: { children: React.ReactNode }) {
     return (
         <HeroUIProvider>
-            <ToastProvider placement="top-center" toastOffset={5} />
-            {children}
+            <NextThemesProvider>
+                <ToastProvider placement="bottom-right" toastOffset={5} />
+                {children}
+            </NextThemesProvider>
         </HeroUIProvider>
     )
 }

@@ -5,9 +5,10 @@ export type IPage = z.infer<typeof pageSchema>
 
 export type IPageResponse = IPage & { _id: string }
 export interface IPageModels {
-    getPages: () => Promise<IPageResponse[]>
+    getPages: (isDynamic?: boolean, title?: string) => Promise<IPageResponse[]>
     getPageBySlug: (slug: string) => Promise<IPageResponse>
     getPageById: (id: string) => Promise<IPageResponse>
     createPage: (page: IPage) => Promise<IPageResponse>
     updatePage: (page: Partial<IPage>) => Promise<IPageResponse>
+    deletePage: (id: string) => Promise<IPageResponse>
 }

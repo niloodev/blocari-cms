@@ -2,17 +2,17 @@
 
 import { menus } from '@/modules/editor/editor.constants'
 import { useEditor } from '@/modules/editor/store'
-import { Button, Tooltip } from '@heroui/react'
+import { Button, Tooltip } from '@/shared/libs/heroui'
 
 export function MenuSelector() {
     const { selectedMenu, setSelectedMenu } = useEditor()
 
     return (
-        <nav className="flex flex-col min-w-[56px] w-[56px] border-b-[1.5px] border-solid border-[#f4f4f5]">
+        <nav className="flex flex-col min-w-[56px] w-[56px] border-b-[1.5px] border-solid border-content1 bg-content1">
             {menus?.map((menu, index) => (
                 <div
                     key={index}
-                    className={`border-[1.5px] border-solid border-[#f4f4f5] gap-[6px] flex flex-col py-[18px] items-center w-full ${index === menus.length - 1 ? 'flex-1' : ''}`}
+                    className={`border-[1.5px] border-solid border-content2 gap-[6px] flex flex-col py-[18px] items-center w-full ${index === menus.length - 1 ? 'flex-1' : ''}`}
                 >
                     {menu?.map(item => (
                         <Tooltip
@@ -20,14 +20,16 @@ export function MenuSelector() {
                             content={item.title}
                             placement="right"
                             color="foreground"
+                            closeDelay={0}
                         >
                             <Button
-                                className={`${item.title == selectedMenu.title ? 'text-[#006FEE]' : ''}`}
+                                className={`${item.title == selectedMenu.title ? 'text-primary' : ''}`}
                                 onPress={() => setSelectedMenu(item)}
                                 isDisabled={item.disabled}
                                 variant="light"
                                 isIconOnly
                                 size="sm"
+                                aria-label={item.title}
                             >
                                 {item.icon}
                             </Button>

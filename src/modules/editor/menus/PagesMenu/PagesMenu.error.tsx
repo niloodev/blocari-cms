@@ -1,9 +1,9 @@
-import { Alert } from '@heroui/react'
+import { Alert } from '@/shared/libs/heroui'
 import { MenuTitle } from '@/modules/editor/components/atoms'
 
 export function PagesMenuError() {
     return (
-        <div className="menu-wrapper">
+        <div className="menu-wrapper" data-testid="pages-menu-error">
             <MenuTitle>Páginas</MenuTitle>
             <div className="scrollable-wrapper">
                 <div className="flex flex-wrap justify-between pr-[2px] gap-[12px]">

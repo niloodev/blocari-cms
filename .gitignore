@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# local env (use .env.example as a template)
+.env
+.env.local
+
 # debug
 npm-debug.log*
 yarn-debug.log*

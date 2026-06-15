@@ -1,4 +1,4 @@
-import { Button } from '@heroui/react'
+import { Button } from '@/shared/libs/heroui'
 import { PlusIcon } from 'lucide-react'
 import { AddButtonProps } from './AddButton.types'
 

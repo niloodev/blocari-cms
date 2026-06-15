@@ -7,4 +7,4 @@ export const pageErrors = {
     pageNotUpdated: 'Página não atualizada',
     slugAlreadyExists: 'Rota já está em uso',
     slugIsRequired: 'Rota é obrigatória',
-}
+} as const

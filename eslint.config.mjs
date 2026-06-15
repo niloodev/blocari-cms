@@ -6,6 +6,14 @@ const compat = new FlatCompat({
 })
 
 const eslintConfig = [
+    {
+        ignores: [
+            '**/*.test.*',
+            '**/*.spec.*',
+            '**/__tests__/**',
+            '**/__mocks__/**',
+        ],
+    },
     ...compat.config({
         extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
     }),
@@ -13,6 +21,8 @@ const eslintConfig = [
     {
         rules: {
             'react/display-name': 'off',
+            '@typescript-eslint/no-require-imports': 'off',
+            '@typescript-eslint/ban-ts-comment': 'off',
             '@typescript-eslint/naming-convention': [
                 'error',
                 // { selector: 'variable', format: ['camelCase'] },

@@ -1,3 +1,3 @@
-import { ButtonProps } from '@heroui/react'
+import { ButtonProps } from '@/shared/libs/heroui'
 
 export type AddButtonProps = ButtonProps

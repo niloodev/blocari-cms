@@ -1,7 +1,7 @@
 'use client'
 
 import { Puck } from '@measured/puck'
-import { MenuTitle } from '@/modules/editor/components/atoms'
+import { MenuTitle } from '@/modules/editor/components/atoms/MenuTitle'
 
 export function ComponentsMenu() {
     return (

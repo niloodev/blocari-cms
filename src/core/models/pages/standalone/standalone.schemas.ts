@@ -7,10 +7,30 @@ export const pagesSchema = new Schema<IPage>(
             type: String,
             required: true,
         },
+        description: {
+            type: String,
+            required: false,
+            default: '',
+        },
+        canonical: {
+            type: String,
+            required: false,
+            default: '',
+        },
+        opengraphImage: {
+            type: String,
+            required: false,
+            default: '',
+        },
         slug: {
             type: String,
             required: true,
             unique: true,
+        },
+        dynamicAdaptor: {
+            type: String,
+            required: false,
+            default: '',
         },
         content: {
             type: Object,

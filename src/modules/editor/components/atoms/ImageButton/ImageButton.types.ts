@@ -1,8 +1,10 @@
-import { StaticImageData } from 'next/image'
-
 export interface ImageButtonProps {
     name: string
-    image: StaticImageData
+    image: {
+        src: string
+        width: number
+        height: number
+    }
     selected?: boolean
     onPress?: () => void
 }

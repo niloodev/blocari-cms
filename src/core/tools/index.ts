@@ -1,1 +1,5 @@
-export * from './typeSwitcher'
+export { typeSwitcher } from './typeSwitcher'
+export type { ITypeSwitcherProps } from './typeSwitcher'
+export * from './base64Utils'
+export * from './urlUtils'
+export * from './dynamicRoute'

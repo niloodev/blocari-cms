@@ -1,4 +1,4 @@
-import { SelectProps } from '@heroui/react'
+import { SelectProps } from '@/shared/libs/heroui'
 import { FieldProps } from '@/modules/editor/fields'
 
 export type FieldSelectItens = {

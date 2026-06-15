@@ -1,13 +1,13 @@
 import { usePuck } from '@measured/puck'
 import { isEqual } from 'lodash'
 
-import { useEditor } from '@/modules/editor/store/editorSlice'
+import { useEditor } from '@/modules/editor/store'
 import { useMemo } from 'react'
 import { Check, CircleDashed } from 'lucide-react'
 
 export function usePageStatus() {
     const { appState } = usePuck()
-    const { publishedData } = useEditor()
+    const { publishedData, isLoading } = useEditor()
 
     const isDraft = useMemo(() => {
         const contentWithoutEmpty = Object.entries(publishedData?.content || {})
@@ -17,7 +17,7 @@ export function usePageStatus() {
             })
             .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
 
-        const dataWithoutEmpty = Object.entries(appState.data || {})
+        const dataWithoutEmpty = Object.entries(appState.data)
             .filter(([, value]) => {
                 if (!value || typeof value !== 'object') return true
                 return Object.keys(value).length > 0
@@ -33,13 +33,13 @@ export function usePageStatus() {
 
     const status = {
         published: (
-            <span className="leading-[110%] text-[#17C964] text-xs flex gap-0.5 items-center">
+            <span className="leading-[110%] text-success text-xs flex gap-0.5 items-center">
                 Publicado
                 <Check color="#17C964" strokeWidth={3} width={12} height={12} />
             </span>
         ),
         draft: (
-            <span className="leading-[110%] text-[#FF9800] text-xs flex gap-1 items-center">
+            <span className="leading-[110%] text-warning text-xs flex gap-1 items-center">
                 Rascunho
                 <CircleDashed
                     color="#FF9800"
@@ -55,5 +55,6 @@ export function usePageStatus() {
         isDraft,
         status,
         pageName,
+        isLoading,
     }
 }

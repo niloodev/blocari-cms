@@ -3,7 +3,7 @@
 import { PropertyContainer } from '@/modules/editor/components/atoms'
 import { FieldFilesProps } from './FieldFiles.types'
 
-import { Button } from '@heroui/react'
+import { Button } from '@/shared/libs/heroui'
 import { Plus } from 'lucide-react'
 
 import { FileRow } from './subcomponents'
@@ -30,13 +30,15 @@ export function FieldFiles({
                     className="hidden"
                     onChange={addFile}
                     onClick={handleOnClick}
+                    data-testid="input-file"
                 />
                 {files.length < limit && (
                     <Button
-                        className="rounded-[6px] min-w-[28px] w-[28px] h-[28px] bg-[#F4F4F5] text-[#A1A1AA]"
+                        className="bg-content3 text-foreground"
                         size="sm"
                         isIconOnly
                         onPress={() => inputRef.current?.click()}
+                        aria-label="Adicionar arquivo"
                     >
                         <Plus width={16} height={16} />
                     </Button>

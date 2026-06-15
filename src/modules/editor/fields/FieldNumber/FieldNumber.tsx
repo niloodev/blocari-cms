@@ -1,6 +1,6 @@
 'use client'
 
-import { NumberInput } from '@heroui/react'
+import { NumberInput } from '@/shared/libs/heroui'
 import { PropertyContainer } from '@/modules/editor/components/atoms'
 import { FieldNumberProps } from './FieldNumber.types'
 

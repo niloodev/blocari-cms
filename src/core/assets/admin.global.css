@@ -9,12 +9,12 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: rgb(163, 163, 163);
+        background-color: hsl(var(--heroui-foreground));
         border-radius: 10px;
     }
 
     &::-webkit-scrollbar-track {
-        background-color: rgb(255, 255, 255);
+        background-color: hsl(var(--heroui-background));
         border-radius: 10px;
     }
 }
@@ -25,6 +25,7 @@
         flex-direction: column;
         gap: 12px;
         max-height: 100%;
+        flex: 1;
     }
 
     .properties-wrapper {
@@ -37,5 +38,6 @@
     .scrollable-wrapper {
         flex: 1;
         overflow-y: auto;
+        height: 100%;
     }
 }

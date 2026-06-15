@@ -1,0 +1,1 @@
+export { usePageMutation } from './usePageMutation'

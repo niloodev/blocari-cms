@@ -1,7 +1,7 @@
 'use client'
 
-import { Button, Link } from '@heroui/react'
-import { Download, Trash, Upload } from 'lucide-react'
+import { Button, Tooltip } from '@/shared/libs/heroui'
+import { Trash, Upload } from 'lucide-react'
 
 import { FileRowProps } from './FileRow.types'
 import { useFileRow } from './FileRow.hook'
@@ -25,35 +25,33 @@ export function FileRow({
                 accept={allowedExtensions}
                 className="hidden"
                 onChange={replaceFile}
+                data-testid="replace-file-input"
             />
-            <span className="w-full py-[8px] px-[6px] text-[12px] leading-[100%] text-[#18181B]">
+            <span className="w-full py-[8px] px-[6px] text-[12px] leading-[100%] text-foreground">
                 {file.name}
             </span>
-            <Link
-                className="rounded-[6px] cursor-pointer min-w-[28px] w-[28px] h-[28px] justify-center items-center bg-[#F4F4F5] text-[#A1A1AA]"
-                size="sm"
-                isExternal
-                download={file.name}
-                href={URL.createObjectURL(file)}
-            >
-                <Download width={16} height={16} />
-            </Link>
-            <Button
-                className="px-[none] rounded-[6px] min-w-[28px] max-w-[28px] h-[28px] bg-[#F4F4F5] text-[#A1A1AA]"
-                size="sm"
-                onPress={deleteFile}
-                isIconOnly
-            >
-                <Trash width={16} height={16} />
-            </Button>
-            <Button
-                className="px-[none] rounded-[6px] min-w-[28px] max-w-[28px] h-[28px] bg-[#F4F4F5] text-[#A1A1AA]"
-                size="sm"
-                onPress={() => specificInputRef.current?.click()}
-                isIconOnly
-            >
-                <Upload width={16} height={16} />
-            </Button>
+            <Tooltip content="Remover arquivo">
+                <Button
+                    className="px-[none] rounded-[6px] min-w-[28px] max-w-[28px] h-[28px] bg-content3 text-foreground"
+                    size="sm"
+                    onPress={deleteFile}
+                    isIconOnly
+                    aria-label="Remover arquivo"
+                >
+                    <Trash width={16} height={16} />
+                </Button>
+            </Tooltip>
+            <Tooltip content="Substituir arquivo">
+                <Button
+                    className="px-[none] rounded-[6px] min-w-[28px] max-w-[28px] h-[28px] bg-content3 text-foreground"
+                    size="sm"
+                    onPress={() => specificInputRef.current?.click()}
+                    isIconOnly
+                    aria-label="Substituir arquivo"
+                >
+                    <Upload width={16} height={16} />
+                </Button>
+            </Tooltip>
         </div>
     )
 }

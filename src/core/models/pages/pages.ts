@@ -15,3 +15,4 @@ export const createPage = pageModels.createPage
 export const getPageBySlug = pageModels.getPageBySlug
 export const getPageById = pageModels.getPageById
 export const updatePage = pageModels.updatePage
+export const deletePage = pageModels.deletePage

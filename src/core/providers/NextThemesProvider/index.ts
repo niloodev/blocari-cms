@@ -1,0 +1,1 @@
+export { NextThemesProvider } from './NextThemesProvider'

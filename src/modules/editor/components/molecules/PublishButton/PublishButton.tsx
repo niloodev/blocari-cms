@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@heroui/react'
+import { Button } from '@/shared/libs/heroui'
 import { CloudUpload } from 'lucide-react'
 import { usePublishButton } from './PublishButton.hook'
 
@@ -11,9 +11,10 @@ export function PublishButton() {
         <Button
             isLoading={isLoading}
             onPress={handlePublish}
-            className="px-3 py-1.5 bg-[#006FEE] gap-2 text-[#fff] text-xs leading-4 ml-2 w-[101px]"
+            size="sm"
+            className="bg-primary-700 text-background ml-2 h-full"
+            startContent={!isLoading && <CloudUpload width={20} height={20} />}
         >
-            <CloudUpload color="#fff" width={20} height={20} />
             {pageId ? 'Atualizar' : 'Publicar'}
         </Button>
     )
