@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 export const StyledHero = styled.section`
     position: relative;
-    overflow: hidden;
     width: 100%;
     padding: clamp(80px, 14vw, 160px) 5vw;
 
